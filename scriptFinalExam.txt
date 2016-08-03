@@ -1,0 +1,49 @@
+DROP TABLE Link
+DROP TABLE Category
+DROP TABLE RelationLinkCategory
+
+CREATE TABLE Link
+(
+id int not null generated always as identity,
+address varchar(200) not null,
+name varchar(200) not null,
+description varchar(100),
+created DATE DEFAULT CURRENT DATE,
+lang varchar(20),
+finish varchar(1) DEFAULT 'N',
+primary key(id)
+)
+
+CREATE TABLE Category
+(
+name varchar(40),
+primary key(name)
+)
+
+CREATE TABLE RelationLinkCategory
+(
+linkId int constraint link_fk references link ON DELETE CASCADE,
+categoryName varchar(40) constraint category_fk references category ON DELETE CASCADE,
+primary key(linkId,categoryName)
+)
+
+INSERT INTO Link
+(address,name,description,lang)
+VALUES
+('https://ru.wikipedia.org/wiki/Java','Java','Java —строго типизированный объектно-
+ориентированный язык программирования',
+'RU'),
+('https://en.wikipedia.org/wiki/Michael_Jackson','MJ','Some facts about his 
+life','EN')
+
+INSERT INTO Link
+(address,name,description,lang,finish)
+VALUES
+('http://www.ticketmaster.com/','Tickets','Service for buying tickets',
+'EN','Y')
+
+INSERT INTO Category(name)
+VALUES('CS'),('Music'),('Different')
+
+INSERT INTO RelationLinkCategory(linkID,categoryName)
+VALUES(1,'CS'),(1,'Different'),(2,'Music'),(3,'Music')
