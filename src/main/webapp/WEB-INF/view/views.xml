@@ -1,0 +1,26 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+   <definition name="template" 
+	     template="/WEB-INF/view/main_template.jsp"> 
+	<put-attribute name="header" 
+	     value="/WEB-INF/view/tiles/linkHeader.jsp" />
+	<put-attribute name="menu" 
+	      value="/WEB-INF/view/tiles/menu.jsp" />
+<put-attribute name="footer"   
+	      value="/WEB-INF/view/tiles/footer.jsp" />
+     </definition>
+     <definition name="listOfLinks" extends="template">
+	<put-attribute name="body" value="/WEB-INF/view/listOfLinks.jsp" />
+      </definition>
+      <definition name="newLink" extends="template">
+	<put-attribute name="body" 
+	      value="/WEB-INF/view/newLink.jsp" />
+      </definition>
+      <definition name="newCategory" extends="template">
+	<put-attribute name="body" 
+	      value="/WEB-INF/view/newCategory.jsp" />
+      </definition>
+</tiles-definitions>
+	      
